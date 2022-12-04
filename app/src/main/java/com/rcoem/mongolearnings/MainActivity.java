@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         name = findViewById(R.id.name);
         weight = findViewById(R.id.weight);
         height = findViewById(R.id.height);

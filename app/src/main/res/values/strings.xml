@@ -24,6 +24,7 @@
     <string name="explore_more">Explore More</string>
     <string name="clear_all">Clear All</string>
     <string name="web_client_id" tools:ignore="TypographyDashes">150831264007-8unmit726mq76u0a5g729oinqcm6309o.apps.googleusercontent.com</string>
+    <string name="welcome">Welcome!</string>
     <plurals name="active_notification_count_nonzero">
         <item quantity="one">%d active notification</item>
         <item quantity="other">%d active notifications</item>

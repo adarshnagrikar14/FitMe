@@ -17,7 +17,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity {
+
     EditText name, weight, height;
     String sName;
     float fWeight, fHeight;
@@ -30,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         name = findViewById(R.id.name);
         weight = findViewById(R.id.weight);
@@ -48,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
             radioButton = (RadioButton) findViewById(selectedId);
 
         });
+
+        CircleImageView imageView = findViewById(R.id.profileImage);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        Glide.with(this).load(Objects.requireNonNull(mAuth.getCurrentUser()).getPhotoUrl()).centerCrop().into(imageView);
 
     }
 
@@ -117,4 +128,9 @@ public class MainActivity extends AppCompatActivity {
     public void openNew(View view) {
         startActivity(new Intent(this, GraphActivity.class));
     }
+
+    public void openAccount(View view) {
+        startActivity(new Intent(this, AccountActivity.class));
+    }
+
 }

@@ -29,6 +29,7 @@
     <string name="your_details">Your details:</string>
     <string name="your_bmi">Your BMI:</string>
     <string name="diet_plan">Diet Plan:</string>
+    <string name="see_graph">See Graph:</string>
     <plurals name="active_notification_count_nonzero">
         <item quantity="one">%d active notification</item>
         <item quantity="other">%d active notifications</item>

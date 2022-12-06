@@ -1,6 +1,7 @@
 package com.rcoem.mongolearnings;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -120,6 +121,7 @@ public class AccountActivity extends AppCompatActivity {
             myDB.set(data).addOnSuccessListener(unused -> {
                 progressDialog.dismiss();
                 Toast.makeText(this, "Data added successfully", Toast.LENGTH_SHORT).show();
+                performExit();
             }).addOnFailureListener(e -> {
                 progressDialog.dismiss();
                 Toast.makeText(this, "Error occurred!", Toast.LENGTH_SHORT).show();
@@ -129,5 +131,11 @@ public class AccountActivity extends AppCompatActivity {
             Toast.makeText(this, "Enter all details", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void performExit() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

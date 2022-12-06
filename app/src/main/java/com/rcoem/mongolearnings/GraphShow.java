@@ -43,12 +43,10 @@ public class GraphShow extends AppCompatActivity {
 
         textView.setText(allBMI);
 
-
         graphView = findViewById(R.id.idGraphView);
         graphView2 = findViewById(R.id.idGraphView2);
         graphView3 = findViewById(R.id.idGraphView3);
         graphView4 = findViewById(R.id.idGraphView4);
-
 
         graphView1(weightData.get(0), weightData.get(1), weightData.get(2), weightData.get(3), weightData.get(4), weightData.get(5));
         graphView2F(weightData.get(6), weightData.get(7), weightData.get(8), weightData.get(9), weightData.get(10), weightData.get(11));

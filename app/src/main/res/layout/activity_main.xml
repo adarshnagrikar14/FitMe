@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -16,7 +16,7 @@
         <Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black" >
+            android:background="@color/black">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -25,178 +25,461 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/app_name"
                     android:layout_centerVertical="true"
+                    android:text="@string/app_name"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     tools:ignore="RelativeOverlap" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="47dp"
-                    android:layout_height="47dp"
-                    app:civ_border_width="1sp"
-                    android:layout_marginEnd="10sp"
-                    android:layout_alignParentEnd="true"
-                    android:onClick="openAccount"
+                    android:id="@+id/profileImage"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10sp"
                     android:layout_marginBottom="8dp"
-                    app:civ_border_color="@color/white"
+                    android:layout_toStartOf="@id/menu"
+                    android:onClick="openAccount"
                     android:src="@color/cardview_dark_background"
-                    android:id="@+id/profileImage"/>
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="1sp" />
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/app_name"
+                    android:onClick="openMenu"
+                    android:padding="5dp"
+                    android:src="@drawable/menu_horizontal"
+                    android:tooltipText="Menu"
+                    tools:ignore="UnusedAttribute" />
 
             </RelativeLayout>
 
         </Toolbar>
 
-        <!--View starts-->
-        <EditText
-            android:id="@+id/name"
+        <!--View starts: When data available-->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20sp"
-            android:autofillHints="name"
-            android:hint="@string/enter_name"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            android:padding="20sp"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20sp"
-            android:orientation="horizontal"
-            android:padding="10sp">
-
-            <RadioButton
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/male" />
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:autofillHints="name"
+                android:hint="@string/enter_name"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName"
+                android:padding="20sp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-            <RadioButton
-                android:layout_width="0dp"
+            <RadioGroup
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/female" />
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:orientation="horizontal"
+                android:padding="10sp">
 
-        </RadioGroup>
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/male" />
 
-        <EditText
-            android:id="@+id/height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20sp"
-            android:hint="@string/enter_height_in_mtr"
-            android:imeOptions="actionNext"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="20sp"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/female" />
 
-        <EditText
-            android:id="@+id/weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20sp"
-            android:hint="@string/enter_weight_in_k_g"
-            android:imeOptions="actionDone"
-            android:importantForAutofill="no"
-            android:inputType="numberDecimal"
-            android:padding="20sp"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            </RadioGroup>
 
-        <RadioGroup
-            android:id="@+id/radioVN"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="10sp"
-            android:layout_marginEnd="20sp"
-            android:orientation="horizontal"
-            android:padding="10sp">
-
-            <RadioButton
-                android:id="@+id/veg"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:tag="1"
-                android:text="@string/vegetarian" />
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:hint="@string/enter_height_in_mtr"
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:padding="20sp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/nonVeg"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:tag="2"
-                android:text="@string/non_vegetarian" />
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:hint="@string/enter_weight_in_k_g"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:padding="20sp"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-        </RadioGroup>
+            <RadioGroup
+                android:id="@+id/radioVN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:orientation="horizontal"
+                android:padding="10sp">
 
-        <Button
+                <RadioButton
+                    android:id="@+id/veg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tag="1"
+                    android:text="@string/vegetarian" />
+
+                <RadioButton
+                    android:id="@+id/nonVeg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tag="2"
+                    android:text="@string/non_vegetarian" />
+
+            </RadioGroup>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="25sp"
+                android:backgroundTint="@color/black"
+                android:onClick="checkBmi"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="25sp"
+                android:backgroundTint="@color/black"
+                android:onClick="openNew"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="@string/explore_more"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/bmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20sp"
+                android:layout_marginBottom="20sp"
+                android:gravity="center"
+                android:padding="10sp"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/diet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:layout_marginBottom="20sp"
+                android:gravity="center"
+                android:padding="10sp"
+                android:text="@string/app_name"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/yesData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25sp"
-            android:layout_marginTop="30sp"
-            android:layout_marginEnd="25sp"
-            android:backgroundTint="@color/black"
-            android:onClick="checkBmi"
-            android:paddingTop="10sp"
-            android:paddingBottom="10sp"
-            android:text="@string/submit"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:visibility="visible">
 
-        <Button
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300sp"
+                android:src="@drawable/fitness"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/nameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="8dp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="18sp"
+                android:text="@string/your_details"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="30dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/myName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/myHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/myWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/myGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/myDiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10sp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:text="@string/your_bmi"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="30dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/myBMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:text="@string/diet_plan"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="30dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/checkDiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="Check Diet Plan"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="10sp"
+                android:text="More to Explore"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="30dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15sp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/exploreMore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/black"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="Explore More"
+                        android:onClick="openNew"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <!--View starts: When no data-->
+        <LinearLayout
+            android:id="@+id/noData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25sp"
-            android:layout_marginTop="30sp"
-            android:layout_marginEnd="25sp"
-            android:backgroundTint="@color/black"
-            android:onClick="openNew"
-            android:paddingTop="10sp"
-            android:paddingBottom="10sp"
-            android:text="@string/explore_more"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/bmi"
-            android:layout_gravity="center"
-            android:layout_marginTop="20sp"
-            android:layout_marginBottom="20sp"
-            android:gravity="center"
-            android:padding="10sp"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/no_data"
+                tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/diet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10sp"
-            android:layout_marginBottom="20sp"
-            android:gravity="center"
-            android:padding="10sp"
-            android:text="@string/app_name"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:gravity="center"
+                android:text="@string/no_data_found_ngo_to_profile_section_to_add_information"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginTop="30sp"
+                android:layout_marginEnd="30sp"
+                android:backgroundTint="@color/black"
+                android:onClick="openAccount"
+                android:paddingTop="10sp"
+                android:paddingBottom="10sp"
+                android:text="My Account"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
